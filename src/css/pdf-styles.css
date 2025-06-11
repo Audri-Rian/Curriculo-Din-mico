@@ -1,0 +1,69 @@
+/* Estilos para o PDF */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos do cabeçalho */
+.perfil {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.perfil h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.perfil .contato {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+/* Estilos das seções */
+.secao {
+    margin-bottom: 30px;
+}
+
+.secao h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* Estilos das listas */
+.lista {
+    list-style-type: none;
+    padding: 0;
+}
+
+.lista li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.lista li:before {
+    content: "•";
+    color: #3498db;
+    position: absolute;
+    left: 0;
+}
+
+/* Estilos para impressão */
+@media print {
+    .container {
+        padding: 0;
+    }
+
+    button {
+        display: none;
+    }
+
+    .secao {
+        page-break-inside: avoid;
+    }
+} 

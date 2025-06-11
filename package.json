@@ -1,0 +1,12 @@
+{
+  "name": "curriculo-online",
+  "version": "1.0.0",
+  "description": "Currículo online com integração ao LinkedIn",
+  "main": "src/pages/index.html",
+  "scripts": {
+    "start": "http-server src -p 3000"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+} 
