@@ -22,7 +22,7 @@ Um currículo dinâmico e responsivo que pode ser facilmente personalizado e exp
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/curriculo.git
+git clone https://github.com/Audri-Rian/Curriculo-Din-mico.git
 ```
 
 2. Personalize o arquivo `src/config/config.js` com suas informações

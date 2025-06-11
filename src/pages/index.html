@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currículo — <span id="nomeCompleto"></span></title>
+    <title>Currículo — Audri Rian</title>
     <script type="application/ld+json" id="jsonLd">
     </script>
     <!-- Importando html2pdf.js -->
@@ -68,22 +68,27 @@
         }
     </style>
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/Person">
     <button id="exportButton">Exportar para PDF</button>
 
     <header>
-        <h1 id="nomeCompleto"></h1>
+        <h1 itemprop="name" id="nomeCompleto"></h1>
         <p>
-            <strong>Email:</strong> <span id="email"></span><br>
-            <strong>Telefone:</strong> <span id="telefone"></span><br>
-            <strong>LinkedIn:</strong> <a id="linkedin" href="" target="_blank"></a><br>
-            <strong>GitHub:</strong> <a id="github" href="" target="_blank"></a>
+            <strong>Email:</strong> <span itemprop="email" id="email"></span><br>
+            <strong>Telefone:</strong> <span itemprop="telephone" id="telefone"></span><br>
+            <strong>LinkedIn:</strong> <a itemprop="url" id="linkedin" href="" target="_blank" rel="noopener"></a><br>
+            <strong>GitHub:</strong> <a itemprop="url" id="github" href="" target="_blank" rel="noopener"></a>
         </p>
+        <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+            <span itemprop="addressLocality" id="cidade"></span>,
+            <span itemprop="addressRegion" id="estado"></span>
+        </div>
     </header>
 
     <section aria-labelledby="perfil">
         <h2 id="perfil">Perfil Profissional</h2>
-        <p id="descricao"></p>
+        <p itemprop="jobTitle" id="cargo"></p>
+        <p itemprop="description" id="descricao"></p>
     </section>
 
     <section aria-labelledby="experiencia">
@@ -129,18 +134,60 @@
                     "addressRegion": config.perfil.estado,
                     "addressCountry": "BR"
                 },
-                "hasOccupation": config.perfil.cargo,
-                "knowsLanguage": config.perfil.idiomas,
-                "skill": Object.values(config.skills).flat()
+                "hasOccupation": {
+                    "@type": "Role",
+                    "roleName": config.perfil.cargo
+                },
+                "knowsLanguage": config.perfil.idiomas.map(idioma => ({
+                    "@type": "Language",
+                    "name": idioma
+                })),
+                "description": config.perfil.descricao,
+                "url": config.perfil.portfolio,
+                "sameAs": [
+                    config.perfil.linkedin,
+                    config.perfil.github
+                ],
+                "alumniOf": config.educacao.map(edu => ({
+                    "@type": "EducationalOrganization",
+                    "name": edu.instituicao,
+                    "educationalCredentialAwarded": edu.curso,
+                    "startDate": edu.inicioISO,
+                    "endDate": edu.fimISO
+                })),
+                "worksFor": config.experiencia.map(exp => ({
+                    "@type": "Organization",
+                    "name": exp.empresa,
+                    "employee": {
+                        "@type": "EmployeeRole",
+                        "roleName": exp.cargo,
+                        "startDate": exp.inicioISO,
+                        "endDate": exp.fimISO,
+                        "description": exp.responsabilidades.join(" ")
+                    }
+                })),
+                "award": config.certificacoes.map(cert => ({
+                    "@type": "EducationalCredential",
+                    "name": cert.nome,
+                    "dateAwarded": cert.dataISO,
+                    "credentialCategory": "certification"
+                })),
+                "knowsAbout": Object.entries(config.skills).map(([categoria, habilidades]) => ({
+                    "@type": "Thing",
+                    "name": categoria,
+                    "description": habilidades.join(", ")
+                }))
             };
             document.getElementById('jsonLd').textContent = JSON.stringify(jsonLd, null, 2);
         }
 
         // Função genérica para criar elementos
-        function criarElemento(tipo, conteudo, classe = '') {
+        function criarElemento(tipo, conteudo, classe = '', itemscope = false, itemtype = '') {
             const elemento = document.createElement(tipo);
             if (conteudo) elemento.innerHTML = conteudo;
             if (classe) elemento.className = classe;
+            if (itemscope) elemento.setAttribute('itemscope', '');
+            if (itemtype) elemento.setAttribute('itemtype', itemtype);
             return elemento;
         }
 
@@ -154,6 +201,9 @@
             document.getElementById('linkedin').textContent = 'LinkedIn';
             document.getElementById('github').href = perfil.github;
             document.getElementById('github').textContent = 'GitHub';
+            document.getElementById('cidade').textContent = perfil.cidade;
+            document.getElementById('estado').textContent = perfil.estado;
+            document.getElementById('cargo').textContent = perfil.cargo;
             document.getElementById('descricao').textContent = perfil.descricao;
         }
 
@@ -161,13 +211,17 @@
         function preencherExperiencia() {
             const container = document.getElementById('experienciaContainer');
             config.experiencia.forEach(exp => {
-                const article = criarElemento('article', '', 'clearfix');
+                const article = criarElemento('article', '', 'clearfix', true, 'https://schema.org/Organization');
                 article.innerHTML = `
-                    <h3>${exp.empresa} <span class="date">${exp.periodo}</span></h3>
-                    <p><em>${exp.cargo}</em></p>
-                    <ul>
-                        ${exp.responsabilidades.map(resp => `<li>${resp}</li>`).join('')}
-                    </ul>
+                    <h3 itemprop="name">${exp.empresa}</h3>
+                    <div itemprop="employee" itemscope itemtype="https://schema.org/EmployeeRole">
+                        <p><em itemprop="roleName">${exp.cargo}</em></p>
+                        <meta itemprop="startDate" content="${exp.inicioISO}">
+                        ${exp.fimISO ? `<meta itemprop="endDate" content="${exp.fimISO}">` : ''}
+                        <ul>
+                            ${exp.responsabilidades.map(resp => `<li itemprop="description">${resp}</li>`).join('')}
+                        </ul>
+                    </div>
                 `;
                 container.appendChild(article);
             });
@@ -177,10 +231,12 @@
         function preencherEducacao() {
             const container = document.getElementById('educacaoContainer');
             config.educacao.forEach(edu => {
-                const li = criarElemento('li');
+                const li = criarElemento('li', '', '', true, 'https://schema.org/EducationalOrganization');
                 li.innerHTML = `
-                    <strong>${edu.curso}</strong> — ${edu.instituicao}
-                    <span class="date">${edu.periodo}</span>
+                    <strong itemprop="educationalCredentialAwarded">${edu.curso}</strong>
+                    <span itemprop="name">${edu.instituicao}</span>
+                    <meta itemprop="startDate" content="${edu.inicioISO}">
+                    <meta itemprop="endDate" content="${edu.fimISO}">
                 `;
                 container.appendChild(li);
             });
@@ -189,10 +245,16 @@
         // Função para preencher skills
         function preencherSkills() {
             const container = document.getElementById('skillsContainer');
-            Object.values(config.skills).flat().forEach(skill => {
-                const li = criarElemento('li');
-                li.textContent = skill;
-                container.appendChild(li);
+            Object.entries(config.skills).forEach(([categoria, habilidades]) => {
+                const div = criarElemento('div', '', '', true, 'https://schema.org/Thing');
+                div.innerHTML = `<strong itemprop="name">${categoria}:</strong> `;
+                habilidades.forEach(skill => {
+                    const li = criarElemento('li');
+                    li.textContent = skill;
+                    li.setAttribute('itemprop', 'description');
+                    div.appendChild(li);
+                });
+                container.appendChild(div);
             });
         }
 
@@ -200,11 +262,11 @@
         function preencherProjetos() {
             const container = document.getElementById('projetosContainer');
             config.projetos.forEach(proj => {
-                const li = criarElemento('li');
+                const li = criarElemento('li', '', '', true, 'https://schema.org/CreativeWork');
                 li.innerHTML = `
-                    <strong>${proj.nome}</strong>
-                    <span class="date">${proj.data}</span><br>
-                    ${proj.descricao}
+                    <strong itemprop="name">${proj.nome}</strong>
+                    <meta itemprop="datePublished" content="${proj.dataISO}">
+                    <p itemprop="description">${proj.descricao}</p>
                 `;
                 container.appendChild(li);
             });
@@ -214,8 +276,12 @@
         function preencherCertificacoes() {
             const container = document.getElementById('certificacoesContainer');
             config.certificacoes.forEach(cert => {
-                const li = criarElemento('li');
-                li.innerHTML = `${cert.nome} — ${cert.data}`;
+                const li = criarElemento('li', '', '', true, 'https://schema.org/EducationalCredential');
+                li.innerHTML = `
+                    <span itemprop="name">${cert.nome}</span>
+                    <meta itemprop="dateAwarded" content="${cert.dataISO}">
+                    <meta itemprop="credentialCategory" content="certification">
+                `;
                 container.appendChild(li);
             });
         }
