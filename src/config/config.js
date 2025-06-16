@@ -3,7 +3,7 @@ const config = {
     nome: "Audri Rian",
     email: "audri.rian@gmail.com",
     telefone: "(87) 99600-0000",
-    descricao: "Desenvolvedor Full Stack com 1 ano de experiência em desenvolvimento web, especializado em Laravel e React. Fundador da Trinext, empresa focada em soluções tecnológicas inovadoras. Comprometido com boas práticas de programação e experiência do usuário.",
+    descricao: "Desenvolvedor com experiência Full Stack, agora focado em Front-End. Experiência em desenvolvimento web com React e Vue.js, e conhecimentos em NextJS e Flutter. Fundador da Trinext, empresa focada em soluções tecnológicas inovadoras. Comprometido com boas práticas de programação, otimização de desempenho, experiência do usuário e metodologias ágeis.",
     linkedin: "https://linkedin.com/in/audri-rian",
     github: "https://github.com/audri-rian",
     portfolio: "https://audri-rian.dev",
@@ -13,10 +13,10 @@ const config = {
     ],
     skills: {
       "Linguagens de Programação": ["PHP", "Java", "JavaScript", "TypeScript", "HTML", "CSS"],
-      "Frameworks & Bibliotecas": ["Laravel", "React", "Vue.js", "JavaFX", "Bootstrap"],
+      "Frameworks & Bibliotecas": ["Laravel", "React", "Vue.js", "JavaFX", "Bootstrap", "Next.js", "Flutter"],
       "Banco de Dados": ["MySQL", "PostgreSQL", "MongoDB"],
       "Ferramentas & DevOps": ["Git", "Docker", "Linux", "Figma", "Scene Builder"],
-      "Metodologias": ["Clean Code", "SOLID", "TDD", "Scrum", "Git Flow"]
+      "Metodologias": ["Clean Code", "SOLID", "TDD", "Scrum", "Git Flow", "Kanban", "CI/CD"]
     }
   },
 
@@ -168,9 +168,10 @@ const config = {
       fimISO: null,
       responsabilidades: [
         "Fundação e gestão de uma empresa de tecnologia focada em soluções inovadoras",
-        "Desenvolvimento de sistemas web utilizando Laravel e React",
-        "Implementação de arquiteturas escaláveis e seguras",
-        "Gestão de equipe e projetos",
+        "Desenvolvimento front-end de sistemas web utilizando React, com foco em boas práticas e experiência do usuário",
+        "Otimização de desempenho de interfaces e aplicação de testes",
+        "Colaboração com equipes multidisciplinares seguindo metodologias ágeis",
+        "Pesquisa e aplicação de novas tecnologias para melhorias contínuas",
         "Definição de estratégias tecnológicas e de negócios"
       ],
       tecnologias: ["Laravel", "React", "MySQL", "Docker", "Git", "AWS"]
@@ -183,11 +184,11 @@ const config = {
       inicioISO: "2025-02-01",
       fimISO: "2025-06-01",
       responsabilidades: [
-        "Desenvolvimento de aplicações web utilizando Laravel e React",
-        "Implementação de interfaces responsivas e interativas",
-        "Integração com APIs e serviços externos",
-        "Colaboração em projetos de equipe seguindo metodologias ágeis",
-        "Manutenção e otimização de sistemas existentes"
+        "Desenvolvimento de aplicações web com foco em front-end utilizando React",
+        "Implementação de interfaces responsivas e interativas, garantindo uma ótima experiência do usuário",
+        "Integração com APIs e serviços externos em colaboração com a equipe de back-end",
+        "Colaboração em projetos de equipe seguindo metodologias ágeis (Scrum)",
+        "Manutenção e otimização de sistemas existentes, incluindo testes e depuração"
       ],
       tecnologias: ["Laravel", "React", "MySQL", "Git", "Bootstrap"]
     }
@@ -220,7 +221,8 @@ const config = {
         "Implementação de módulos para contas a pagar/receber",
         "Controle de estoque e fluxo de caixa",
         "Relatórios gerenciais personalizados",
-        "Arquitetura modular e escalável"
+        "Arquitetura modular e escalável",
+        "Desenvolvimento de interface de usuário responsiva com Vue.js"
       ],
       tecnologias: ["Laravel", "Vue.js", "MySQL", "PHP", "Git"]
     },
@@ -242,7 +244,7 @@ const config = {
       status: "Concluído",
       descricao: "Plataforma web para gestão de serviços de limpeza, desenvolvida com Laravel e Blade.",
       detalhes: [
-        "Desenvolvimento do site institucional e sistema de gestão",
+        "Desenvolvimento front-end do sistema de gestão com foco em usabilidade",
         "Implementação de templates Blade reutilizáveis",
         "Integração com sistemas de pagamento",
         "Dashboard administrativo personalizado",
@@ -250,75 +252,6 @@ const config = {
       ],
       tecnologias: ["Laravel", "Blade", "PHP", "MySQL", "Git", "Bootstrap"]
     }
-  ],
-
-  certificacoes: [
-    {
-      nome: "AWS Certified Developer Associate",
-      data: "2023-12",
-      dataISO: "2023-12-01",
-    },
-    {
-      nome: "Laravel Certified Developer",
-      data: "2023-06",
-      dataISO: "2023-06-01",
-    },
-    {
-      nome: "Scrum Master Professional",
-      data: "2022-09",
-      dataISO: "2022-09-01",
-    },
-    {
-      nome: "Google Associate Cloud Engineer",
-      data: "2023-03",
-      dataISO: "2023-03-01",
-    },
-    {
-      nome: "Microsoft Certified: Azure Fundamentals",
-      data: "2022-11",
-      dataISO: "2022-11-01",
-    },
-    {
-      nome: "Kubernetes Certified Application Developer",
-      data: "2024-01",
-      dataISO: "2024-01-01",
-    },
-    {
-      nome: "Oracle Java SE 11 Developer",
-      data: "2022-06",
-      dataISO: "2022-06-01",
-    },
-    {
-      nome: "GitLab Certified CI/CD Specialist",
-      data: "2023-08",
-      dataISO: "2023-08-01",
-    },
-    {
-      nome: "MongoDB Certified Developer Associate",
-      data: "2023-05",
-      dataISO: "2023-05-01",
-    },
-    {
-      nome: "Flutter & Dart - The Complete Guide",
-      data: "2024-04",
-      dataISO: "2024-04-01",
-    },
-    { nome: "React Advanced Patterns", data: "2023-07", dataISO: "2023-07-01" },
-    {
-      nome: "Clean Architecture com PHP",
-      data: "2024-05",
-      dataISO: "2024-05-01",
-    },
-    {
-      nome: "Python for Data Science & Machine Learning",
-      data: "2023-10",
-      dataISO: "2023-10-01",
-    },
-    {
-      nome: "Elastic Certified Engineer",
-      data: "2022-10",
-      dataISO: "2022-10-01",
-    },
   ],
 };
 

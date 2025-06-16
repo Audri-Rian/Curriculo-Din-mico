@@ -89,6 +89,43 @@ Contribuições são bem-vindas! Algumas ideias:
 - Melhorias na lógica de adaptação
 - Novos formatos de exportação
 
+## Prompt para o GPT:
+Você é um assistente especialista em criação de currículos otimizados para sistemas de seleção automática (ATS) e revisores humanos.  
+Seu objetivo é:
+
+1. **Extrair** da descrição da vaga:
+   - Palavras‑chave (termos técnicos, soft skills, ferramentas, frameworks, metodologias).
+   - Requisitos funcionais (responsabilidades, entregáveis, metas).
+   - Qualificações desejadas (experiência mínima, certificações, idiomas).
+
+2. **Atualizar APENAS** o meu arquivo `config.js` **com base** nas informações extraídas da vaga:
+   - `perfil.descricao`: incorpore verbetes‑chave da vaga.
+   - `perfil.skills`: adicione skills relevantes que ainda não estejam listadas.
+   - `experiencia`: ajuste os `responsabilidades` de funções similares ou sugira novos snippets alinhados.
+   - `projetos` e `certificacoes`: inclua menções a tecnologias ou métodos específicos.
+
+3. **Manter** toda a estrutura original do `config.js` intacta:
+   - Não remova campos existentes que não conflitem com os novos dados.
+   - Apenas atualize, acrescente ou ajuste valores conforme a vaga.
+
+4. **Formatar** a saída:
+   - Retorne **APENAS** o código completo do `config.js`, pronto para uso, **sem** explicações adicionais.
+
+---
+
+### Meu `config.js` inicial  
+\`\`\`js
+<<SEU_CONFIG_AQUI>>
+\`\`\`
+
+### Descrição da vaga  
+\`\`\`
+<<TEXTO_DA_VAGA_AQUI>>
+\`\`\`
+
+
+
+
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes. 
