@@ -8,32 +8,86 @@
     </script>
     <!-- Importando html2pdf.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Importando Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body { 
-            font-family: Arial, sans-serif; 
+            font-family: 'Poppins', sans-serif; 
             line-height: 1.4; 
             color: #111; 
-            padding: 1rem; 
+            padding: 0.5rem; 
             margin: 0;
         }
         h1, h2 { 
             margin-bottom: 0.25rem; 
+            text-transform: uppercase;
+            color: #6b46c1;
+            font-weight: 600;
+        }
+        h3 {
+            color: #6b46c1;
+            font-weight: 600;
         }
         section { 
-            margin-top: 1rem; 
+            margin-top: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ccc;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .header h1 {
+            margin-bottom: 0.25rem;
+        }
+        .contact-info {
+            margin-bottom: 0.5rem;
+        }
+        .social-links {
+            margin-bottom: 0.5rem;
+        }
+        .experience-item, .project-item {
+            margin-bottom: 0.75rem;
+        }
+        .experience-item h3, .project-item h3 {
+            margin-bottom: 0.25rem;
+        }
+        .date {
+            font-style: italic;
+            color: #666;
+        }
+        .technologies {
+            margin-top: 0.25rem;
+            font-style: italic;
         }
         ul { 
             list-style: none; 
             padding-left: 0; 
-        }
-        .date { 
-            float: right; 
-            font-style: italic; 
+            margin: 0.25rem 0;
         }
         .skill-list li { 
             display: inline-block; 
             margin-right: 0.5rem; 
+            margin-bottom: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        .skill-category {
+            margin-bottom: 0.75rem;
+        }
+        .skill-category h3 {
             margin-bottom: 0.5rem;
+            color: #6b46c1;
+        }
+        .certification-item {
+            margin-bottom: 0.5rem;
+        }
+        .certification-item h3 {
+            margin-bottom: 0.25rem;
         }
         .clearfix::after { 
             content: ""; 
@@ -71,49 +125,47 @@
 <body itemscope itemtype="https://schema.org/Person">
     <button id="exportButton">Exportar para PDF</button>
 
-    <header>
+    <header class="header">
         <h1 itemprop="name" id="nomeCompleto"></h1>
-        <p>
-            <strong>Email:</strong> <span itemprop="email" id="email"></span><br>
-            <strong>Telefone:</strong> <span itemprop="telephone" id="telefone"></span><br>
-            <strong>LinkedIn:</strong> <a itemprop="url" id="linkedin" href="" target="_blank" rel="noopener"></a><br>
-            <strong>GitHub:</strong> <a itemprop="url" id="github" href="" target="_blank" rel="noopener"></a>
-        </p>
-        <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-            <span itemprop="addressLocality" id="cidade"></span>,
-            <span itemprop="addressRegion" id="estado"></span>
+        <div class="contact-info">
+            <span itemprop="telephone" id="telefone"></span> | 
+            <span itemprop="email" id="email"></span>
+        </div>
+        <div class="social-links">
+            <a itemprop="url" id="linkedin" href="" target="_blank" rel="noopener">LinkedIn</a> | 
+            <a itemprop="url" id="github" href="" target="_blank" rel="noopener">GitHub</a> | 
+            <a itemprop="url" id="portfolio" href="" target="_blank" rel="noopener">Portfolio</a>
         </div>
     </header>
 
-    <section aria-labelledby="perfil">
-        <h2 id="perfil">Perfil Profissional</h2>
-        <p itemprop="jobTitle" id="cargo"></p>
+    <section aria-labelledby="about">
+        <h2 id="about">About</h2>
         <p itemprop="description" id="descricao"></p>
     </section>
 
     <section aria-labelledby="experiencia">
-        <h2 id="experiencia">Experiência Profissional</h2>
+        <h2 id="experiencia">Experiences</h2>
         <div id="experienciaContainer"></div>
     </section>
 
-    <section aria-labelledby="educacao">
-        <h2 id="educacao">Formação Acadêmica</h2>
-        <div id="educacaoContainer"></div>
-    </section>
-
-    <section aria-labelledby="skills">
-        <h2 id="skills">Skills Técnicas</h2>
-        <ul class="skill-list" id="skillsContainer"></ul>
-    </section>
-
     <section aria-labelledby="projetos">
-        <h2 id="projetos">Projetos Relevantes</h2>
+        <h2 id="projetos">Projects</h2>
         <div id="projetosContainer"></div>
     </section>
 
-    <section aria-labelledby="certificacoes">
-        <h2 id="certificacoes">Certificações</h2>
-        <div id="certificacoesContainer"></div>
+    <section aria-labelledby="skills">
+        <h2 id="skills">Skills</h2>
+        <div id="skillsContainer"></div>
+    </section>
+
+    <section aria-labelledby="idiomas">
+        <h2 id="idiomas">Languages</h2>
+        <div id="idiomasContainer"></div>
+    </section>
+
+    <section aria-labelledby="educacao">
+        <h2 id="educacao">Education</h2>
+        <div id="educacaoContainer"></div>
     </section>
 
     <script type="module">
@@ -128,20 +180,6 @@
                 "name": config.perfil.nome,
                 "email": config.perfil.email,
                 "telephone": config.perfil.telefone,
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": config.perfil.cidade,
-                    "addressRegion": config.perfil.estado,
-                    "addressCountry": "BR"
-                },
-                "hasOccupation": {
-                    "@type": "Role",
-                    "roleName": config.perfil.cargo
-                },
-                "knowsLanguage": config.perfil.idiomas.map(idioma => ({
-                    "@type": "Language",
-                    "name": idioma
-                })),
                 "description": config.perfil.descricao,
                 "url": config.perfil.portfolio,
                 "sameAs": [
@@ -165,30 +203,9 @@
                         "endDate": exp.fimISO,
                         "description": exp.responsabilidades.join(" ")
                     }
-                })),
-                "award": config.certificacoes.map(cert => ({
-                    "@type": "EducationalCredential",
-                    "name": cert.nome,
-                    "dateAwarded": cert.dataISO,
-                    "credentialCategory": "certification"
-                })),
-                "knowsAbout": Object.entries(config.skills).map(([categoria, habilidades]) => ({
-                    "@type": "Thing",
-                    "name": categoria,
-                    "description": habilidades.join(", ")
                 }))
             };
             document.getElementById('jsonLd').textContent = JSON.stringify(jsonLd, null, 2);
-        }
-
-        // Função genérica para criar elementos
-        function criarElemento(tipo, conteudo, classe = '', itemscope = false, itemtype = '') {
-            const elemento = document.createElement(tipo);
-            if (conteudo) elemento.innerHTML = conteudo;
-            if (classe) elemento.className = classe;
-            if (itemscope) elemento.setAttribute('itemscope', '');
-            if (itemtype) elemento.setAttribute('itemtype', itemtype);
-            return elemento;
         }
 
         // Função para preencher os dados básicos
@@ -198,12 +215,8 @@
             document.getElementById('email').textContent = perfil.email;
             document.getElementById('telefone').textContent = perfil.telefone;
             document.getElementById('linkedin').href = perfil.linkedin;
-            document.getElementById('linkedin').textContent = 'LinkedIn';
             document.getElementById('github').href = perfil.github;
-            document.getElementById('github').textContent = 'GitHub';
-            document.getElementById('cidade').textContent = perfil.cidade;
-            document.getElementById('estado').textContent = perfil.estado;
-            document.getElementById('cargo').textContent = perfil.cargo;
+            document.getElementById('portfolio').href = perfil.portfolio;
             document.getElementById('descricao').textContent = perfil.descricao;
         }
 
@@ -211,49 +224,16 @@
         function preencherExperiencia() {
             const container = document.getElementById('experienciaContainer');
             config.experiencia.forEach(exp => {
-                const article = criarElemento('article', '', 'clearfix', true, 'https://schema.org/Organization');
-                article.innerHTML = `
-                    <h3 itemprop="name">${exp.empresa}</h3>
-                    <div itemprop="employee" itemscope itemtype="https://schema.org/EmployeeRole">
-                        <p><em itemprop="roleName">${exp.cargo}</em></p>
-                        <meta itemprop="startDate" content="${exp.inicioISO}">
-                        ${exp.fimISO ? `<meta itemprop="endDate" content="${exp.fimISO}">` : ''}
-                        <ul>
-                            ${exp.responsabilidades.map(resp => `<li itemprop="description">${resp}</li>`).join('')}
-                        </ul>
-                    </div>
+                const div = document.createElement('div');
+                div.className = 'experience-item';
+                div.innerHTML = `
+                    <h3>${exp.empresa} – ${exp.cargo}</h3>
+                    <div class="date">${exp.inicio} - ${exp.fim || 'present'}</div>
+                    <ul>
+                        ${exp.responsabilidades.map(resp => `<li>${resp}</li>`).join('')}
+                    </ul>
+                    ${exp.tecnologias ? `<div class="technologies">Technologies: ${exp.tecnologias.join(', ')}</div>` : ''}
                 `;
-                container.appendChild(article);
-            });
-        }
-
-        // Função para preencher educação
-        function preencherEducacao() {
-            const container = document.getElementById('educacaoContainer');
-            config.educacao.forEach(edu => {
-                const li = criarElemento('li', '', '', true, 'https://schema.org/EducationalOrganization');
-                li.innerHTML = `
-                    <strong itemprop="educationalCredentialAwarded">${edu.curso}</strong>
-                    <span itemprop="name">${edu.instituicao}</span>
-                    <meta itemprop="startDate" content="${edu.inicioISO}">
-                    <meta itemprop="endDate" content="${edu.fimISO}">
-                `;
-                container.appendChild(li);
-            });
-        }
-
-        // Função para preencher skills
-        function preencherSkills() {
-            const container = document.getElementById('skillsContainer');
-            Object.entries(config.skills).forEach(([categoria, habilidades]) => {
-                const div = criarElemento('div', '', '', true, 'https://schema.org/Thing');
-                div.innerHTML = `<strong itemprop="name">${categoria}:</strong> `;
-                habilidades.forEach(skill => {
-                    const li = criarElemento('li');
-                    li.textContent = skill;
-                    li.setAttribute('itemprop', 'description');
-                    div.appendChild(li);
-                });
                 container.appendChild(div);
             });
         }
@@ -262,27 +242,60 @@
         function preencherProjetos() {
             const container = document.getElementById('projetosContainer');
             config.projetos.forEach(proj => {
-                const li = criarElemento('li', '', '', true, 'https://schema.org/CreativeWork');
-                li.innerHTML = `
-                    <strong itemprop="name">${proj.nome}</strong>
-                    <meta itemprop="datePublished" content="${proj.dataISO}">
-                    <p itemprop="description">${proj.descricao}</p>
+                const div = document.createElement('div');
+                div.className = 'project-item';
+                div.innerHTML = `
+                    <h3>${proj.nome} – ${proj.status}</h3>
+                    <p>${proj.descricao}</p>
+                    <ul>
+                        ${proj.detalhes.map(det => `<li>${det}</li>`).join('')}
+                    </ul>
+                    ${proj.tecnologias ? `<div class="technologies">Technologies: ${proj.tecnologias.join(', ')}</div>` : ''}
                 `;
-                container.appendChild(li);
+                container.appendChild(div);
             });
         }
 
-        // Função para preencher certificações
-        function preencherCertificacoes() {
-            const container = document.getElementById('certificacoesContainer');
-            config.certificacoes.forEach(cert => {
-                const li = criarElemento('li', '', '', true, 'https://schema.org/EducationalCredential');
-                li.innerHTML = `
-                    <span itemprop="name">${cert.nome}</span>
-                    <meta itemprop="dateAwarded" content="${cert.dataISO}">
-                    <meta itemprop="credentialCategory" content="certification">
+        // Função para preencher skills
+        function preencherSkills() {
+            const container = document.getElementById('skillsContainer');
+            const skills = config.perfil.skills;
+            
+            for (const [categoria, items] of Object.entries(skills)) {
+                const div = document.createElement('div');
+                div.className = 'skill-category';
+                div.innerHTML = `
+                    <h3>${categoria}</h3>
+                    <ul class="skill-list">
+                        ${items.map(skill => `<li>${skill}</li>`).join('')}
+                    </ul>
                 `;
-                container.appendChild(li);
+                container.appendChild(div);
+            }
+        }
+
+        // Função para preencher idiomas
+        function preencherIdiomas() {
+            const container = document.getElementById('idiomasContainer');
+            const idiomas = config.perfil.idiomas.map(idioma => 
+                `${idioma.nome} – ${idioma.nivel}`
+            ).join('. ');
+            container.textContent = idiomas;
+        }
+
+        // Função para preencher educação
+        function preencherEducacao() {
+            const container = document.getElementById('educacaoContainer');
+            config.educacao.forEach(edu => {
+                const div = document.createElement('div');
+                div.className = 'education-item';
+                div.innerHTML = `
+                    <h3>${edu.curso}</h3>
+                    <div class="date">${edu.inicio} - ${edu.fim}</div>
+                    <p>${edu.instituicao}</p>
+                    ${edu.detalhes ? `<ul>${edu.detalhes.map(det => `<li>${det}</li>`).join('')}</ul>` : ''}
+                `;
+                container.appendChild(div);
             });
         }
 
@@ -294,10 +307,10 @@
             atualizarJsonLd();
             preencherDadosBasicos();
             preencherExperiencia();
-            preencherEducacao();
-            preencherSkills();
             preencherProjetos();
-            preencherCertificacoes();
+            preencherSkills();
+            preencherIdiomas();
+            preencherEducacao();
         }
 
         inicializar();

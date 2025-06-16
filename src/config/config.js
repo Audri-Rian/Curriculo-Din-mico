@@ -1,134 +1,325 @@
 const config = {
-    // Perfil permanece inalterado.
-    perfil: {
-        nome: "Audri Rian",
-        email: "audririan1@gmail.com",
-        telefone: "+55 75 99294-4283",
-        linkedin: "https://linkedin.com/in/audri-rian-720068215",
-        github: "https://github.com/Audri-Rian",
-        portfolio: "https://audririan.dev",
-        cidade: "Sertânia",
-        estado: "Pernambuco",
-        cargo: "Desenvolvedor Full Stack",
-        idiomas: ["Português", "Inglês"],
-        descricao: "Desenvolvedor Full Stack com experiência em desenvolvimento web, focado em criar soluções eficientes e escaláveis. Apaixonado por tecnologia e sempre em busca de novos desafios e aprendizados."
-    },
-
-    // Adicionadas várias novas skills para estressar o sistema.
+  perfil: {
+    nome: "Audri Rian",
+    email: "audri.rian@gmail.com",
+    telefone: "(87) 99600-0000",
+    descricao: "Desenvolvedor Full Stack com 1 ano de experiência em desenvolvimento web, especializado em Laravel e React. Fundador da Trinext, empresa focada em soluções tecnológicas inovadoras. Comprometido com boas práticas de programação e experiência do usuário.",
+    linkedin: "https://linkedin.com/in/audri-rian",
+    github: "https://github.com/audri-rian",
+    portfolio: "https://audri-rian.dev",
+    idiomas: [
+      { nome: "Português", nivel: "Nativo" },
+      { nome: "Inglês", nivel: "Intermediário" },
+    ],
     skills: {
-        "Linguagens de Programação": [
-            "PHP", "JavaScript", "TypeScript", "Python", "Java", "C#", "Ruby", "Go", "Rust", "Swift", "Kotlin", "Dart", "Perl", "C", "C++"
-        ],
-        "Frameworks": [
-            "Laravel", "Symfony", "React", "Next.js", "Vue.js", "Nuxt.js", "Angular", "Svelte", "NestJS", "Express.js",
-            "Django", "Flask", "Spring Boot", "Ruby on Rails", "ASP.NET Core", "Flutter", "Ionic", "Electron"
-        ],
-        "Banco de Dados": [
-            "MySQL", "PostgreSQL", "MongoDB", "SQLite", "MariaDB", "Firebase", "Cassandra", "Redis", "DynamoDB", "Neo4j",
-            "Elasticsearch", "Oracle DB", "IBM Db2"
-        ],
-        "Ferramentas": [
-            "Git", "GitHub Actions", "Bitbucket", "GitLab CI", "Docker", "Kubernetes", "Vagrant", "Jenkins", "Terraform",
-            "Webpack", "Babel", "ESLint", "Prettier", "Figma", "Postman", "Insomnia", "Zabbix", "Prometheus", "Grafana", "New Relic"
-        ],
-        "Plataformas e Cloud": [
-            "AWS", "Azure", "Google Cloud", "Heroku", "DigitalOcean", "Netlify", "Vercel", "Railway", "Render"
-        ],
-        "Metodologias": [
-            "Scrum", "Kanban", "XP (Extreme Programming)", "Lean", "Waterfall", "TDD", "BDD", "CI/CD", "DevOps", "DDD",
-            "Clean Architecture", "SOLID", "KISS", "DRY", "YAGNI"
-        ],
-        "Testes e Qualidade": [
-            "Jest", "Mocha", "Chai", "PHPUnit", "PyTest", "Cypress", "Selenium", "TestCafe", "Vitest", "Playwright"
-        ],
-        "APIs e Integrações": [
-            "REST", "GraphQL", "gRPC", "WebSockets", "OpenAPI", "Stripe API", "Paypal API", "OAuth 2.0", "JWT", "Firebase Auth"
-        ],
-        "Mobile": [
-            "React Native", "Flutter", "SwiftUI", "Kotlin Multiplatform Mobile", "Xamarin", "Capacitor", "Cordova"
-        ]
+      "Linguagens de Programação": ["PHP", "Java", "JavaScript", "TypeScript", "HTML", "CSS"],
+      "Frameworks & Bibliotecas": ["Laravel", "React", "Vue.js", "JavaFX", "Bootstrap"],
+      "Banco de Dados": ["MySQL", "PostgreSQL", "MongoDB"],
+      "Ferramentas & DevOps": ["Git", "Docker", "Linux", "Figma", "Scene Builder"],
+      "Metodologias": ["Clean Code", "SOLID", "TDD", "Scrum", "Git Flow"]
+    }
+  },
+
+  skills: {
+    "Linguagens de Programação": [
+      "PHP",
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "Java",
+      "C#",
+      "Ruby",
+      "Go",
+      "Rust",
+      "Swift",
+      "Kotlin",
+      "Dart",
+      "Perl",
+      "C",
+      "C++",
+    ],
+    Frameworks: [
+      "Laravel",
+      "Symfony",
+      "React",
+      "Next.js",
+      "Vue.js",
+      "Nuxt.js",
+      "Angular",
+      "Svelte",
+      "NestJS",
+      "Express.js",
+      "Django",
+      "Flask",
+      "Spring Boot",
+      "Ruby on Rails",
+      "ASP.NET Core",
+      "Flutter",
+      "Ionic",
+      "Electron",
+    ],
+    "Banco de Dados": [
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite",
+      "MariaDB",
+      "Firebase",
+      "Cassandra",
+      "Redis",
+      "DynamoDB",
+      "Neo4j",
+      "Elasticsearch",
+      "Oracle DB",
+      "IBM Db2",
+    ],
+    Ferramentas: [
+      "Git",
+      "GitHub Actions",
+      "Bitbucket",
+      "GitLab CI",
+      "Docker",
+      "Kubernetes",
+      "Vagrant",
+      "Jenkins",
+      "Terraform",
+      "Webpack",
+      "Babel",
+      "ESLint",
+      "Prettier",
+      "Figma",
+      "Postman",
+      "Insomnia",
+      "Zabbix",
+      "Prometheus",
+      "Grafana",
+      "New Relic",
+    ],
+    "Plataformas e Cloud": [
+      "AWS",
+      "Azure",
+      "Google Cloud",
+      "Heroku",
+      "DigitalOcean",
+      "Netlify",
+      "Vercel",
+      "Railway",
+      "Render",
+    ],
+    Metodologias: [
+      "Scrum",
+      "Kanban",
+      "XP (Extreme Programming)",
+      "Lean",
+      "Waterfall",
+      "TDD",
+      "BDD",
+      "CI/CD",
+      "DevOps",
+      "DDD",
+      "Clean Architecture",
+      "SOLID",
+      "KISS",
+      "DRY",
+      "YAGNI",
+    ],
+    "Testes e Qualidade": [
+      "Jest",
+      "Mocha",
+      "Chai",
+      "PHPUnit",
+      "PyTest",
+      "Cypress",
+      "Selenium",
+      "TestCafe",
+      "Vitest",
+      "Playwright",
+    ],
+    "APIs e Integrações": [
+      "REST",
+      "GraphQL",
+      "gRPC",
+      "WebSockets",
+      "OpenAPI",
+      "Stripe API",
+      "Paypal API",
+      "OAuth 2.0",
+      "JWT",
+      "Firebase Auth",
+    ],
+    Mobile: [
+      "React Native",
+      "Flutter",
+      "SwiftUI",
+      "Kotlin Multiplatform Mobile",
+      "Xamarin",
+      "Capacitor",
+      "Cordova",
+    ],
+  },
+
+  experiencia: [
+    {
+      empresa: "Trinext",
+      cargo: "Fundador & Desenvolvedor Full Stack",
+      inicio: "06/2025",
+      fim: "Presente",
+      inicioISO: "2025-06-01",
+      fimISO: null,
+      responsabilidades: [
+        "Fundação e gestão de uma empresa de tecnologia focada em soluções inovadoras",
+        "Desenvolvimento de sistemas web utilizando Laravel e React",
+        "Implementação de arquiteturas escaláveis e seguras",
+        "Gestão de equipe e projetos",
+        "Definição de estratégias tecnológicas e de negócios"
+      ],
+      tecnologias: ["Laravel", "React", "MySQL", "Docker", "Git", "AWS"]
     },
+    {
+      empresa: "PlanetaNet",
+      cargo: "Desenvolvedor Full Stack Júnior",
+      inicio: "02/2025",
+      fim: "06/2025",
+      inicioISO: "2025-02-01",
+      fimISO: "2025-06-01",
+      responsabilidades: [
+        "Desenvolvimento de aplicações web utilizando Laravel e React",
+        "Implementação de interfaces responsivas e interativas",
+        "Integração com APIs e serviços externos",
+        "Colaboração em projetos de equipe seguindo metodologias ágeis",
+        "Manutenção e otimização de sistemas existentes"
+      ],
+      tecnologias: ["Laravel", "React", "MySQL", "Git", "Bootstrap"]
+    }
+  ],
 
-    // Experiências inalteradas.
-    experiencia: [
-        {
-            empresa: "Empresa Exemplo S.A.",
-            cargo: "Desenvolvedor Full Stack",
-            periodo: "2022-05 – Presente",
-            inicioISO: "2022-05-01",
-            fimISO: null,
-            responsabilidades: [
-                "Desenvolvimento de aplicações web utilizando Laravel e React",
-                "Implementação de APIs RESTful para integração com sistemas externos",
-                "Otimização de performance e escalabilidade de aplicações",
-                "Mentoria de desenvolvedores júnior"
-            ]
-        },
-        {
-            empresa: "Startup Tech",
-            cargo: "Desenvolvedor Backend",
-            periodo: "2021-01 – 2022-04",
-            inicioISO: "2021-01-01",
-            fimISO: "2022-04-30",
-            responsabilidades: [
-                "Desenvolvimento de microserviços em PHP/Laravel",
-                "Implementação de testes automatizados",
-                "Integração com serviços de terceiros via APIs"
-            ]
-        }
-    ],
+  educacao: [
+    {
+      curso: "Análise e Desenvolvimento de Sistemas",
+      instituicao: "Autarquia de Ensino Superior de Arcoverde - AESA",
+      inicio: "01/2024",
+      fim: "06/2026",
+      inicioISO: "2024-01-01",
+      fimISO: "2026-06-30",
+      detalhes: [
+        "Graduação em Tecnologia",
+        "Foco em Desenvolvimento de Software e Sistemas",
+        "Participação em projetos de extensão universitária",
+        "Desenvolvimento de projetos práticos em equipe"
+      ]
+    }
+  ],
 
-    // Educação inalterada.
-    educacao: [
-        {
-            curso: "Bacharel em Ciência da Computação",
-            instituicao: "Universidade Federal de Pernambuco",
-            periodo: "2018-01 – 2021-12",
-            inicioISO: "2018-01-01",
-            fimISO: "2021-12-31"
-        },
-        {
-            curso: "Técnico em Informática",
-            instituicao: "Escola Técnica Estadual",
-            periodo: "2015-01 – 2017-12",
-            inicioISO: "2015-01-01",
-            fimISO: "2017-12-31"
-        }
-    ],
+  projetos: [
+    {
+      nome: "Sistema ERP Universitário",
+      status: "Em Desenvolvimento",
+      descricao: "Sistema ERP customizado para gestão financeira e controle de estoque, desenvolvido como projeto de extensão universitária.",
+      detalhes: [
+        "Liderança no desenvolvimento de um Sistema ERP customizado",
+        "Implementação de módulos para contas a pagar/receber",
+        "Controle de estoque e fluxo de caixa",
+        "Relatórios gerenciais personalizados",
+        "Arquitetura modular e escalável"
+      ],
+      tecnologias: ["Laravel", "Vue.js", "MySQL", "PHP", "Git"]
+    },
+    {
+      nome: "Money Wisdom",
+      status: "Em Desenvolvimento",
+      descricao: "Software desktop para gestão financeira desenvolvido em Java, focado em auxiliar empresas na tomada de decisões financeiras.",
+      detalhes: [
+        "Desenvolvimento de software desktop para gestão financeira",
+        "Implementação de cálculos de ponto de equilíbrio",
+        "Gestão de custos fixos e variáveis",
+        "Controle de funcionários e folha de pagamento",
+        "Interface gráfica moderna e intuitiva"
+      ],
+      tecnologias: ["Java", "JavaFX", "MySQL", "Scene Builder", "Figma"]
+    },
+    {
+      nome: "Lavtuor",
+      status: "Concluído",
+      descricao: "Plataforma web para gestão de serviços de limpeza, desenvolvida com Laravel e Blade.",
+      detalhes: [
+        "Desenvolvimento do site institucional e sistema de gestão",
+        "Implementação de templates Blade reutilizáveis",
+        "Integração com sistemas de pagamento",
+        "Dashboard administrativo personalizado",
+        "Sistema de agendamento de serviços"
+      ],
+      tecnologias: ["Laravel", "Blade", "PHP", "MySQL", "Git", "Bootstrap"]
+    }
+  ],
 
-    // Projetos inalterados.
-    projetos: [
-        {
-            nome: "Sistema de Gestão Empresarial",
-            data: "2023-03",
-            dataISO: "2023-03-01",
-            descricao: "Desenvolvimento de um sistema completo de gestão utilizando Laravel e Vue.js, incluindo módulos de vendas, estoque e financeiro."
-        },
-        {
-            nome: "API de Integração de Pagamentos",
-            data: "2022-08",
-            dataISO: "2022-08-01",
-            descricao: "Criação de uma API RESTful para integração com múltiplos gateways de pagamento, utilizando Laravel e implementando padrões de segurança."
-        }
-    ],
-
-    // MUITAS certificações adicionadas para teste:
-    certificacoes: [
-        { nome: "AWS Certified Developer Associate", data: "2023-12", dataISO: "2023-12-01" },
-        { nome: "Laravel Certified Developer", data: "2023-06", dataISO: "2023-06-01" },
-        { nome: "Scrum Master Professional", data: "2022-09", dataISO: "2022-09-01" },
-        { nome: "Google Associate Cloud Engineer", data: "2023-03", dataISO: "2023-03-01" },
-        { nome: "Microsoft Certified: Azure Fundamentals", data: "2022-11", dataISO: "2022-11-01" },
-        { nome: "Kubernetes Certified Application Developer", data: "2024-01", dataISO: "2024-01-01" },
-        { nome: "Oracle Java SE 11 Developer", data: "2022-06", dataISO: "2022-06-01" },
-        { nome: "GitLab Certified CI/CD Specialist", data: "2023-08", dataISO: "2023-08-01" },
-        { nome: "MongoDB Certified Developer Associate", data: "2023-05", dataISO: "2023-05-01" },
-        { nome: "Flutter & Dart - The Complete Guide", data: "2024-04", dataISO: "2024-04-01" },
-        { nome: "React Advanced Patterns", data: "2023-07", dataISO: "2023-07-01" },
-        { nome: "Clean Architecture com PHP", data: "2024-05", dataISO: "2024-05-01" },
-        { nome: "Python for Data Science & Machine Learning", data: "2023-10", dataISO: "2023-10-01" },
-        { nome: "Elastic Certified Engineer", data: "2022-10", dataISO: "2022-10-01" }
-    ]
+  certificacoes: [
+    {
+      nome: "AWS Certified Developer Associate",
+      data: "2023-12",
+      dataISO: "2023-12-01",
+    },
+    {
+      nome: "Laravel Certified Developer",
+      data: "2023-06",
+      dataISO: "2023-06-01",
+    },
+    {
+      nome: "Scrum Master Professional",
+      data: "2022-09",
+      dataISO: "2022-09-01",
+    },
+    {
+      nome: "Google Associate Cloud Engineer",
+      data: "2023-03",
+      dataISO: "2023-03-01",
+    },
+    {
+      nome: "Microsoft Certified: Azure Fundamentals",
+      data: "2022-11",
+      dataISO: "2022-11-01",
+    },
+    {
+      nome: "Kubernetes Certified Application Developer",
+      data: "2024-01",
+      dataISO: "2024-01-01",
+    },
+    {
+      nome: "Oracle Java SE 11 Developer",
+      data: "2022-06",
+      dataISO: "2022-06-01",
+    },
+    {
+      nome: "GitLab Certified CI/CD Specialist",
+      data: "2023-08",
+      dataISO: "2023-08-01",
+    },
+    {
+      nome: "MongoDB Certified Developer Associate",
+      data: "2023-05",
+      dataISO: "2023-05-01",
+    },
+    {
+      nome: "Flutter & Dart - The Complete Guide",
+      data: "2024-04",
+      dataISO: "2024-04-01",
+    },
+    { nome: "React Advanced Patterns", data: "2023-07", dataISO: "2023-07-01" },
+    {
+      nome: "Clean Architecture com PHP",
+      data: "2024-05",
+      dataISO: "2024-05-01",
+    },
+    {
+      nome: "Python for Data Science & Machine Learning",
+      data: "2023-10",
+      dataISO: "2023-10-01",
+    },
+    {
+      nome: "Elastic Certified Engineer",
+      data: "2022-10",
+      dataISO: "2022-10-01",
+    },
+  ],
 };
 
 export default config;

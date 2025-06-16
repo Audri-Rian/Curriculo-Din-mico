@@ -1,66 +1,94 @@
-# Currículo Dinâmico
+# Currículo Dinâmico Adaptável
 
-Um currículo dinâmico e responsivo que pode ser facilmente personalizado e exportado para PDF.
+Um sistema inteligente para criar currículos personalizados e adaptados para cada vaga específica, utilizando análise de palavras-chave e requisitos da vaga para otimizar sua candidatura.
 
-## Características
+## 🎯 Propósito
 
-- Design responsivo e moderno
-- Exportação para PDF
-- Dados estruturados para SEO (JSON-LD)
-- Fácil personalização através do arquivo de configuração
-- Compatível com leitores de tela
-- Otimizado para impressão
+Este projeto foi desenvolvido para ajudar profissionais a criarem currículos dinâmicos que se adaptam automaticamente às necessidades específicas de cada vaga. Ao invés de ter um currículo estático, você pode:
 
-## Tecnologias Utilizadas
+- Analisar a descrição da vaga usando IAs para identificar palavras-chave e requisitos
+- Adaptar automaticamente seu currículo para destacar as habilidades e experiências mais relevantes
+- Criar múltiplas versões do seu currículo otimizadas para diferentes oportunidades
+- Manter um banco de dados centralizado com todas suas experiências e habilidades
+
+## ✨ Características
+
+- **Adaptação Dinâmica**: Personalização automática baseada na análise da vaga
+- **Análise de Palavras-chave**: Identificação de termos importantes na descrição da vaga
+- **Exportação para PDF**: Geração rápida de currículos otimizados
+- **SEO Otimizado**: Dados estruturados (JSON-LD) para melhor visibilidade
+- **Design Responsivo**: Visual profissional em qualquer dispositivo
+- **Acessibilidade**: Compatível com leitores de tela
+- **Fácil Personalização**: Interface simples para atualização de informações
+
+## 🛠️ Tecnologias
 
 - HTML5
 - CSS3
 - JavaScript (ES6+)
-- html2pdf.js para exportação
+- html2pdf.js
+- Integração com APIs de IA para análise de texto
 
-## Como Usar
+## 📋 Como Usar
 
 1. Clone o repositório:
 ```bash
 git clone https://github.com/Audri-Rian/Curriculo-Din-mico.git
 ```
 
-2. Personalize o arquivo `src/config/config.js` com suas informações
+2. Configure seu perfil base no arquivo `src/config/config.js`:
+   - Adicione todas suas experiências, habilidades e projetos
+   - Mantenha um histórico completo de suas realizações
 
-3. Abra o arquivo `src/pages/index.html` em seu navegador
+3. Para cada vaga:
+   - Cole a descrição da vaga no sistema
+   - Utilize a análise de IA para identificar palavras-chave e requisitos
+   - O sistema sugerirá as melhores experiências e habilidades para destacar
+   - Personalize o currículo conforme necessário
 
-4. Para exportar para PDF, clique no botão "Exportar para PDF" no canto superior direito
+4. Exporte o currículo otimizado em PDF
 
-## Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
 ```
 curriculo/
 ├── src/
 │   ├── pages/
-│   │   └── index.html
+│   │   └── index.html      # Template do currículo
 │   ├── js/
-│   │   └── pdf-export.js
+│   │   └── pdf-export.js   # Lógica de exportação
 │   └── config/
-│       └── config.js
+│       └── config.js       # Banco de dados do seu perfil
 ├── .gitignore
 └── README.md
 ```
 
-## Personalização
+## 🔧 Personalização
 
-Todas as informações do currículo são gerenciadas através do arquivo `src/config/config.js`. Você pode editar:
+O arquivo `src/config/config.js` é seu banco de dados central, onde você mantém:
 
 - Informações pessoais
-- Experiência profissional
+- Experiência profissional completa
 - Educação
-- Habilidades
-- Projetos
+- Habilidades técnicas e soft skills
+- Projetos relevantes
+- Idiomas
 - Certificações
 
-## Contribuição
+Para cada vaga, o sistema:
+1. Analisa a descrição da vaga
+2. Identifica palavras-chave e requisitos
+3. Sugere quais informações destacar
+4. Gera um currículo otimizado
 
-Sinta-se à vontade para contribuir com o projeto através de Pull Requests.
+## 🤝 Contribuição
 
-## Licença
+Contribuições são bem-vindas! Algumas ideias:
+- Novos templates de design
+- Integração com outras APIs de análise de texto
+- Melhorias na lógica de adaptação
+- Novos formatos de exportação
+
+## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes. 
